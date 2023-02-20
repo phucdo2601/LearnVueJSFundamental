@@ -1,23 +1,20 @@
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import HeaderComp from "./components/HeaderComp.vue";
+import ModalComp from "./components/ModalComp.vue";
+
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    HeaderApp: HeaderComp
+    BaseModal : ModalComp
   },
   data() {
     return {
-      
+      isShowModal: false,
     }
   },
 
   methods: {
-    onChange() {
-      console.log(this.$refs.hello);
-      console.log(this.$refs.header);
-      this.$refs.hello.onConsoleTesting();
+    onToggleModel() {
+      this.isShowModal = !this.isShowModal;
     }
   },
 }
@@ -25,43 +22,25 @@ export default {
 </script>
 
 <template>
-    <HeaderApp ref="header"/>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <h1>Hello from vue cli</h1>
+   <Teleport :to="body">
+    <BaseModal
+    v-if="isShowModal"
+     title="this is the new title from app component" 
+    content="this is content model"
+    theme = "sales"
+    @cancel="onToggleModel"
+    >
+    <template v-slot:header>
+      <h2>This is header</h2>
+    </template>
+    <template v-slot:footer>
+      <button @click="onToggleModel">Cancel</button>
+    </template>
+    <label for="">Name</label>.
+    <input type="password">
+  </BaseModal>
+   </Teleport>
 
-    <div class="wrapper">
-      <HelloWorld ref="hello" msg="You did it!" />
-      <br />
-      <button @click="onChange">Click</button>
-    </div>
-  
-  
+    <button @click="onToggleModel">Toggle Modal</button>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
