@@ -1,34 +1,53 @@
 const app = Vue.createApp({
-    // noi dung cua vue se dc load tu day
-    template: `<div><h1>Contact with {{teamName}} and {{ !isHello ? firstName + lastName : ''}}</h1>
-    <!-- <br> 
-    <button v-on:click= "onChangeName">Change Name</button> -->
-    <br />
-    <button @click= "onChangeName">Change Name Method 2</button>
-    <div class="modal" v-if="isShowModel">
-        <h1>Modal Content</h1>
+  // noi dung cua vue se dc load tu day
+  template: "",
+  data() {
+    return {
+      classTesting: "flex",
+      products: [
+        {
+          id: "pro01",
+          name: "pro-name-01",
+          price: 100,
+          thumbUrl: "./assets/a1.png",
+          isCart: false,
+        },
 
-    </div>
+        {
+          id: "pro02",
+          name: "pro-name-02",
+          price: 150,
+          thumbUrl: "./assets/ac1.png",
+          isCart: false,
 
-</div>`,
-    data() {
-        return {
-            teamName: "Test Team 01",
-            firstName: "Phuc",
-            lastName: "Do Ngoc",
-            isHello: false,
-            isShowModel: false,
-        }
-    },
+        },
 
-    methods: {
-        onChangeName() {
-            console.log(this);
-            this.firstName = "Sky";
-            this.lastName = "Billy";
-            this.isShowModel = !this.isShowModel;
-        }
-    },
+        {
+          id: "pro03",
+          name: "pro-name-03",
+          price: 200,
+          thumbUrl: "./assets/arrow.png",
+          isCart: false,
+
+        },
+      ],
+    };
+  },
+  
+
+  methods: {
+    onToggleCart(event, pro) {
+        pro.isCart = !pro.isCart;
+    }
+
+  },
+  computed:{
+    //tinh toan lai truoc khi tra du lieu
+    productComputed(){
+
+        return this.products.filter(pro => pro.price <= 160);
+    }
+  },
 });
 
-app.mount('#contact');
+app.mount("#contact");
