@@ -1,0 +1,29 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "name": "Test-trans-01",
+            "price": 10000
+        },
+        {
+            "id": 2,
+            "name": "Test-trans-02",
+            "price": 20000
+        },
+        {
+            "id": 3,
+            "name": "Test-trans-03",
+            "price": 30000
+        },
+        {
+            "id": 4,
+            "name": "Test-trans-04",
+            "price": 40000
+        },
+        {
+            "id": 5,
+            "name": "Test-trans-05",
+            "price": 50000
+        }
+    ]
+}
