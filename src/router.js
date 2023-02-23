@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router"
-import HomePage from "./pages/HomePage.vue";
+import HomeFetchDataPage from "./pages/HomeFetchDataPage.vue";
 import TransactionPage from "./pages/TransactionPage.vue";
 import TransactionDetailsPage from "./pages/TransactionDetailsPage.vue";
 import NotFoundPage from "./pages/NotFoundPage.vue";
@@ -9,7 +9,9 @@ const routes = [
         path: "/", 
         
 
-        component: HomePage
+        // component: HomePage
+        component: HomeFetchDataPage
+
     },
     {
         path: "/transactions",  
