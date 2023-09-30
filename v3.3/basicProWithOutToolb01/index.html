@@ -21,7 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li v-for="link in links" class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">{{link}}</a>
+                        <!-- v:bind for using binding data with a speacial syntax
+                                                                                                                                                                            shothand syntax is :
+                                                                                                                                                                        -->
+                        <a class="nav-link" aria-current="page" :href="link.url" :title="`This is the testpage`">{{link.text}}</a>
                     </li>
     
                 </ul>
@@ -37,10 +40,27 @@
         createApp({
             data() {
                 return {
-                    links: ['Home', 'About', 'Category', 'Item', 'Department'],
+                    links: [
+                        {
+                            text: 'Home',
+                            url: 'home.html',
+                        },
+                        {
+                            text: 'About',
+                            url: 'about.html',
+                        },
+                        {
+                            text: 'Item',
+                            url: 'item.html',
+                        },
+                        {
+                            text: 'PhucDn',
+                            url: 'category.html',
+                        },
+                    ],
                 }
             }
-        }).mount('nav')
+        }).mount('nav');
 
                 createApp({
                     setup() {
