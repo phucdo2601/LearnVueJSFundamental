@@ -23,12 +23,22 @@ const vm =  Vue.createApp({
             this.middleName = event.target.value
         }
     },
-
+ 
     computed: {
         fullName() {
             console.log('Full name computed property was called!');
             return `${this.firstName} ${this.middleName} ${this.lastName.toUpperCase()}`;
         },
+    },
+/**
+ * watch is shallow by default: the callback will only trigger when the watched property has been assigned a new value - it won't trigger on nested property changes. If you want the callback to fire on all nested mutations, you need to use a deep watcher:
+ */
+    watch: {
+        age(newAge, oldAge) {
+            setTimeout(() => {
+                this.age = 20
+            }, 3000)
+        }
     }
 }).mount('#app');
 
